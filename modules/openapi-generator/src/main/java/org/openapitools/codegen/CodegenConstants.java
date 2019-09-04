@@ -37,6 +37,9 @@ public class CodegenConstants {
     public static final String API_PACKAGE = "apiPackage";
     public static final String API_PACKAGE_DESC = "package for generated api classes";
 
+    public static final String API_SUFFIX = "apiSuffix";
+    public static final String API_SUFFIX_DESC = "suffix for api classes";
+
     public static final String MODEL_PACKAGE = "modelPackage";
     public static final String MODEL_PACKAGE_DESC = "package for generated models";
 
@@ -66,14 +69,17 @@ public class CodegenConstants {
     public static final String WITH_GO_CODEGEN_COMMENT = "withGoCodegenComment";
     public static final String WITH_GO_CODEGEN_COMMENT_DESC = "whether to include Go codegen comment to disable Go Lint and collapse by default GitHub in PRs and diffs";
 
+    public static final String IS_GO_SUBMODULE = "isGoSubmodule";
+    public static final String IS_GO_SUBMODULE_DESC = "whether the generated Go module is a submodule";
+
     public static final String GROUP_ID = "groupId";
     public static final String GROUP_ID_DESC = "groupId in generated pom.xml";
 
     public static final String ARTIFACT_ID = "artifactId";
-    public static final String ARTIFACT_ID_DESC = "artifactId in generated pom.xml";
+    public static final String ARTIFACT_ID_DESC = "artifactId in generated pom.xml. This also becomes part of the generated library's filename";
 
     public static final String ARTIFACT_VERSION = "artifactVersion";
-    public static final String ARTIFACT_VERSION_DESC = "artifact version in generated pom.xml";
+    public static final String ARTIFACT_VERSION_DESC = "artifact version in generated pom.xml. This also becomes part of the generated library's filename";
 
     public static final String ARTIFACT_URL = "artifactUrl";
     public static final String ARTIFACT_URL_DESC = "artifact URL in generated pom.xml";
@@ -196,11 +202,18 @@ public class CodegenConstants {
     public static final String ENUM_PROPERTY_NAMING = "enumPropertyNaming";
     public static final String ENUM_PROPERTY_NAMING_DESC = "Naming convention for enum properties: 'camelCase', 'PascalCase', 'snake_case', 'UPPERCASE', and 'original'";
 
+    // Allow different language generators to offer an option of serialization library. Each language specific
+    // Codegen constants should define a description and provide proper input validation for the value of serializationLibrary
+    public static final String SERIALIZATION_LIBRARY = "serializationLibrary";
+
     public static final String MODEL_NAME_PREFIX = "modelNamePrefix";
-    public static final String MODEL_NAME_PREFIX_DESC = "Prefix that will be prepended to all model names. Default is the empty string.";
+    public static final String MODEL_NAME_PREFIX_DESC = "Prefix that will be prepended to all model names.";
 
     public static final String MODEL_NAME_SUFFIX = "modelNameSuffix";
-    public static final String MODEL_NAME_SUFFIX_DESC = "Suffix that will be appended to all model names. Default is the empty string.";
+    public static final String MODEL_NAME_SUFFIX_DESC = "Suffix that will be appended to all model names.";
+
+    public static final String GIT_HOST = "gitHost";
+    public static final String GIT_HOST_DESC = "Git host, e.g. gitlab.com.";
 
     public static final String GIT_USER_ID = "gitUserId";
     public static final String GIT_USER_ID_DESC = "Git user ID, e.g. openapitools.";
@@ -229,6 +242,8 @@ public class CodegenConstants {
     public static final String PARCELIZE_MODELS = "parcelizeModels";
     public static final String PARCELIZE_MODELS_DESC = "toggle \"@Parcelize\" for generated models";
 
+    public static final String CASE_INSENSITIVE_RESPONSE_HEADERS = "caseInsensitiveResponseHeaders";
+    public static final String CASE_INSENSITIVE_RESPONSE_HEADERS_DESC = "Make API response's headers case-insensitive";
 
     // Not user-configurable. System provided for use in templates.
 
@@ -298,4 +313,9 @@ public class CodegenConstants {
     public static final String SNAPSHOT_VERSION = "snapshotVersion";
     public static final String SNAPSHOT_VERSION_DESC = "Uses a SNAPSHOT version.";
 
+    public static final String EXCEPTION_ON_FAILURE = "returnExceptionOnFailure";
+    public static final String EXCEPTION_ON_FAILURE_DESC = "Throw an exception on non success response codes";
+
+    public static final String ENUM_CLASS_PREFIX = "enumClassPrefix";
+    public static final String ENUM_CLASS_PREFIX_DESC = "Prefix enum with class name";
 }

@@ -146,6 +146,7 @@ public class CppRestSdkClientCodegen extends AbstractCppCodegen {
         typeMapping.put("binary", "utility::string_t");
         typeMapping.put("number", "double");
         typeMapping.put("UUID", "utility::string_t");
+        typeMapping.put("URI", "utility::string_t");
         typeMapping.put("ByteArray", "utility::string_t");
 
         super.importMapping = new HashMap<String, String>();
@@ -289,12 +290,12 @@ public class CppRestSdkClientCodegen extends AbstractCppCodegen {
 
     @Override
     public String toModelFilename(String name) {
-        return sanitizeName(toModelName(name));
+        return toModelName(name);
     }
 
     @Override
     public String toApiFilename(String name) {
-        return sanitizeName(toModelName(name) + "Api");
+        return toApiName(name);
     }
 
     /**
@@ -358,7 +359,10 @@ public class CppRestSdkClientCodegen extends AbstractCppCodegen {
             return "new " + toModelName(ModelUtils.getSimpleRef(p.get$ref())) + "()";
         } else if (ModelUtils.isStringSchema(p)) {
             return "utility::conversions::to_string_t(\"\")";
+        } else if (ModelUtils.isFreeFormObject(p)) {
+            return "new Object()";
         }
+        
         return "nullptr";
     }
 
