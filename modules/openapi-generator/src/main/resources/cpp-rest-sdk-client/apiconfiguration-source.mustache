@@ -63,6 +63,11 @@ void ApiConfiguration::setApiKey( const utility::string_t& prefix, const utility
     m_ApiKeys[prefix] = apiKey;
 }
 
+void ApiConfiguration::setApiHeaders( const utility::string_t& prefix, const utility::string_t& apiKey )
+{
+    m_DefaultHeaders[prefix] = apiKey;
+}
+
 {{#apiNamespaceDeclarations}}
 }
 {{/apiNamespaceDeclarations}}
