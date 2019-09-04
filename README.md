@@ -913,3 +913,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ---
+
+### Build and push to ECR
+
+```
+cd modules/openapi-generator-cli
+cp ../../docker-entrypoint.sh docker-entrypoint.sh
+docker build -t aitheon/openapi-generator-cli:latest .
+docker push aitheon/openapi-generator-cli
+```
