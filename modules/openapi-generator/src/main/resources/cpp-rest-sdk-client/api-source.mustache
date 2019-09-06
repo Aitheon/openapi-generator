@@ -160,7 +160,7 @@ pplx::task<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/r
         web::json::value localVarJson;
 
         {{#isPrimitiveType}}
-        localVarJson = ModelBase::toJson({{paramName}});
+        localVarJson = ModelBase::toJson(*{{paramName}});
         {{/isPrimitiveType}}
         {{^isPrimitiveType}}
         {{#isListContainer}}
